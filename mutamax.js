@@ -11,7 +11,6 @@ import {
     ERROR_MESSAGE_LIMIT_TO_DATA_INVALID, ERROR_MESSAGE_LIMIT_TO_PROPS_INVALID,
     ERROR_MESSAGE_REPLACE_VALUE_IF_EQUALS_DATA_INVALID,
     ERROR_MESSAGE_REPLACE_VALUE_IF_EQUALS_PROPS_INVALID,
-    ERROR_MESSAGE_REPLACE_VALUE_IF_EQUALS_PROPS_PROPERTY_INVALID,
     ERROR_MESSAGE_REPLACE_ALL_VALUES_IF_EQUALS_DATA_INVALID,
     ERROR_MESSAGE_REPLACE_ALL_VALUES_IF_EQUALS_PROPS_INVALID,
     ERROR_MESSAGE_CAPITALIZE_FIRST_CHAR_DATA_INVALID,
@@ -19,10 +18,24 @@ import {
     VERSION
 } from './constants.js'
 
-const mutamax = (function () {
-    const Public = {}
-    const Private = {
-        isRenameReverseOrder: false
+import {_Object} from './_object'
+import {_Collection} from './_collection'
+import {_Utils} from './_utils'
+
+export default class mutamax {
+    /**
+     * The semantic version number.
+     *
+     * @static
+     * @type {string}
+     * @example
+     *
+     *
+     * console.log(mutamax.VERSION)
+     * // => 0.1.1
+     */
+    static get VERSION () {
+        return VERSION
     }
 
     /**
@@ -64,7 +77,7 @@ const mutamax = (function () {
      * // => [{a: '1', b: 'BATS'}, {c: 'COLOR'}]
      */
 
-    Public.map = function (data, iteratee) {
+    static map (data, iteratee) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_MAP_DATA_INVALID)
         }
@@ -74,9 +87,9 @@ const mutamax = (function () {
         }
 
         if (this.isObject(data)) {
-            Private.object.map(data, iteratee)
+            _Object.map(data, iteratee)
         } else if (this.isArray(data)) {
-            Private.collection.map(data, iteratee)
+            _Collection.map(data, iteratee)
         }
     }
 
@@ -97,7 +110,7 @@ const mutamax = (function () {
      * // => [{a: 2, b: 'bats', hello: 'all'}, {a: 2, c: 'color', hello: 'all'}]
      *
      */
-    Public.merge = function (data, props) {
+    static merge (data, props) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_MERGE_DATA_INVALID)
         }
@@ -107,9 +120,9 @@ const mutamax = (function () {
         }
 
         if (this.isObject(data)) {
-            Private.object.merge(data, props, true)
+            _Object.merge(data, props, true)
         } else if (this.isArray(data)) {
-            Private.collection.merge(data, props, true)
+            _Collection.merge(data, props, true)
         }
     }
 
@@ -130,7 +143,7 @@ const mutamax = (function () {
      * // => [{a: 1, b: 'bats', hello: 'all'}, {a: 2, c: 'color', hello: 'all'}]
      *
      */
-    Public.add = function (data, props) {
+    static add (data, props) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_ADD_DATA_INVALID)
         }
@@ -140,9 +153,9 @@ const mutamax = (function () {
         }
 
         if (this.isObject(data)) {
-            Private.object.merge(data, props, false)
+            _Object.merge(data, props, false)
         } else if (this.isArray(data)) {
-            Private.collection.merge(data, props, false)
+            _Collection.merge(data, props, false)
         }
     }
 
@@ -169,7 +182,7 @@ const mutamax = (function () {
      * // => [{b: 'bats'}, {}]
      *
      */
-    Public.delete = function (data, props) {
+    static delete (data, props) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_DELETE_DATA_INVALID)
         }
@@ -178,9 +191,9 @@ const mutamax = (function () {
         }
 
         if (this.isObject(data)) {
-            Private.object.delete(data, props)
+            _Object.delete(data, props)
         } else if (this.isArray(data)) {
-            Private.collection.delete(data, props)
+            _Collection.delete(data, props)
         }
     }
 
@@ -201,9 +214,9 @@ const mutamax = (function () {
      * // => [{a: 1, mammals: 'bats'}, {orange: 'color'}]
      *
      */
-    Public.rename = function (data, props) {
-        const isReverseOrder = Private.isRenameReverseOrder
-        Private.isRenameReverseOrder = false
+    static rename (data, props) {
+        const isReverseOrder = _Utils.isRenameReverseOrder
+        _Utils.isRenameReverseOrder = false
 
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_RENAME_DATA_INVALID)
@@ -214,9 +227,9 @@ const mutamax = (function () {
         }
 
         if (this.isObject(data)) {
-            Private.object.rename(data, props, isReverseOrder)
+            _Object.rename(data, props, isReverseOrder)
         } else if (this.isArray(data)) {
-            Private.collection.rename(data, props, isReverseOrder)
+            _Collection.rename(data, props, isReverseOrder)
         }
     }
 
@@ -238,8 +251,8 @@ const mutamax = (function () {
      * // => [{a: 1, mammals: 'bats'}, {orange: 'color', d: 'USD'}]
      *
      */
-    Public.renameReverse = function (data, props) {
-        Private.isRenameReverseOrder = true
+    static renameReverse (data, props) {
+        _Utils.isRenameReverseOrder = true
         this.rename(data, props)
     }
 
@@ -261,7 +274,7 @@ const mutamax = (function () {
      * // => [{a: 1}, {c: 'color'}]
      *
      */
-    Public.limitTo = function (data, props) {
+    static limitTo (data, props) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_LIMIT_TO_DATA_INVALID)
         }
@@ -270,9 +283,9 @@ const mutamax = (function () {
         }
 
         if (this.isObject(data)) {
-            Private.object.limitTo(data, props)
+            _Object.limitTo(data, props)
         } else if (this.isArray(data)) {
-            Private.collection.limitTo(data, props)
+            _Collection.limitTo(data, props)
         }
     }
 
@@ -299,7 +312,7 @@ const mutamax = (function () {
      * // => [{a: null, b: null}, {a: null, b: 'fruit'}]
      *
      */
-    Public.replaceValueIfEquals = function (data, props) {
+    static replaceValueIfEquals (data, props) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_REPLACE_VALUE_IF_EQUALS_DATA_INVALID)
         }
@@ -309,9 +322,9 @@ const mutamax = (function () {
         }
 
         if (this.isObject(data)) {
-            Private.object.replaceValueIfEquals(data, props)
+            _Object.replaceValueIfEquals(data, props)
         } else if (this.isArray(data)) {
-            Private.collection.replaceValueIfEquals(data, props)
+            _Collection.replaceValueIfEquals(data, props)
         }
     }
 
@@ -332,7 +345,7 @@ const mutamax = (function () {
      * // => [{a: '', b: 'bats'}, {a: '', b: ''}]
      *
      */
-    Public.replaceAllValuesIfEquals = function (data, props) {
+    static replaceAllValuesIfEquals (data, props) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_REPLACE_ALL_VALUES_IF_EQUALS_DATA_INVALID)
         }
@@ -342,9 +355,9 @@ const mutamax = (function () {
         }
 
         if (this.isObject(data)) {
-            Private.object.replaceAllValuesIfEquals(data, props)
+            _Object.replaceAllValuesIfEquals(data, props)
         } else if (this.isArray(data)) {
-            Private.collection.replaceAllValuesIfEquals(data, props)
+            _Collection.replaceAllValuesIfEquals(data, props)
         }
     }
 
@@ -364,12 +377,12 @@ const mutamax = (function () {
      * // => [{A: 1, Mammal: 'bats'}, {Color: 'c'}]
      *
      */
-    Public.capitalizeFirstChar = function (data) {
+    static capitalizeFirstChar (data) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_CAPITALIZE_FIRST_CHAR_DATA_INVALID)
         }
 
-        Private.changePropertyCaseFirstChar(data, 'toUpperCase')
+        _Utils.changePropertyCaseFirstChar(data, 'toUpperCase')
     }
 
     /**
@@ -388,12 +401,12 @@ const mutamax = (function () {
      * // => [{a: 1, mammal: 'bats'}, {color: 'c'}]
      *
      */
-    Public.deCapitalizeFirstChar = function (data) {
+    static deCapitalizeFirstChar (data) {
         if (!(this.isObject(data) || this.isArray(data))) {
             throw new TypeError(ERROR_MESSAGE_DECAPITALIZE_FIRST_CHAR_DATA_INVALID)
         }
 
-        Private.changePropertyCaseFirstChar(data, 'toLowerCase')
+        _Utils.changePropertyCaseFirstChar(data, 'toLowerCase')
     }
 
     /**
@@ -420,7 +433,7 @@ const mutamax = (function () {
      * mutamax.isObject((function getArgumentsObject() { return arguments })())
      * // => false
      */
-    Public.isObject = function (value) {
+    static isObject (value) {
         return Object.prototype.toString.call(value) === '[object Object]'
     }
 
@@ -448,200 +461,7 @@ const mutamax = (function () {
      * mutamax.isArray((function getArgumentsObject() { return arguments })())
      * // => false
      */
-    Public.isArray = function (value) {
+    static isArray (value) {
         return Object.prototype.toString.call(value) === '[object Array]'
     }
-
-    /**
-     * The semantic version number.
-     *
-     * @static
-     * @type {string}
-     * @example
-     *
-     *
-     * console.log(mutamax.VERSION)
-     * // => 0.1.0
-     */
-    Public.VERSION = VERSION
-
-    Private.object = {
-        map: function (data, iteratee) {
-            Object.entries(data).forEach(function (entry) {
-                const key = entry[0]
-                const value = entry[1]
-
-                const {newKey, newValue} = iteratee(key, value)
-
-                delete data[key]
-                data[newKey] = newValue
-            })
-        },
-
-        delete: function (data, props) {
-            if (typeof props === 'string') {
-                delete data[props]
-            } else if (Public.isArray(props)) {
-                props.forEach(function (property) {
-                    delete data[property]
-                })
-            }
-        },
-
-        rename: function (data, props, isReverseOrder) {
-            Object.entries(props).forEach(function (entry) {
-                let newPropName = ''
-                let oldPropName = ''
-
-                if (isReverseOrder) {
-                    newPropName = entry[0]
-                    oldPropName = entry[1]
-                } else {
-                    newPropName = entry[1]
-                    oldPropName = entry[0]
-                }
-
-                if (newPropName !== oldPropName && Object.prototype.hasOwnProperty.call(data, oldPropName)) {
-                    const existingValue = data[oldPropName]
-                    data[newPropName] = existingValue
-                    delete data[oldPropName]
-                }
-            })
-        },
-
-        limitTo: function (data, props) {
-            Object.keys(data).forEach((property) => {
-                if (props.indexOf(property) === -1) {
-                    delete data[property]
-                }
-            })
-        },
-
-        merge: function (data, props, isOverwriteExistingProps) {
-            Object.entries(props).forEach(function (entry) {
-                const [newPropName, newPropValue] = entry
-
-                if (isOverwriteExistingProps) {
-                    data[newPropName] = newPropValue
-                } else {
-                    if (!Object.prototype.hasOwnProperty.call(data, newPropName)) {
-                        data[newPropName] = newPropValue
-                    }
-                }
-            })
-        },
-
-        replaceAllValuesIfEquals: function (data, props) {
-            Object.keys(data).forEach((property) => {
-                if (data[property] === props.ifEquals) {
-                    data[property] = props.replaceWith
-                }
-            })
-        },
-
-        replaceValueIfEquals: function (data, props) {
-            const replace = (data, property, ifEquals, replaceWith) => {
-                Object.keys(data).forEach((existingProperty) => {
-                    if (existingProperty === property && data[existingProperty] === ifEquals) {
-                        data[existingProperty] = replaceWith
-                    }
-                })
-            }
-
-            if (typeof props.property === 'string') {
-                replace(data, props.property, props.ifEquals, props.replaceWith)
-            } else if (Public.isArray(props.property)) {
-                props.property.forEach((singleProperty) => {
-                    replace(data, singleProperty, props.ifEquals, props.replaceWith)
-                })
-            } else {
-                throw new TypeError(ERROR_MESSAGE_REPLACE_VALUE_IF_EQUALS_PROPS_PROPERTY_INVALID)
-            }
-        },
-
-        changePropertyCaseFirstChar: function (data, capitalizationFunctionName) {
-            Object.keys(data).forEach((property) => {
-                const firstOriginalPropertyChar = property[0]
-                const firstTransformedPropertyChar = firstOriginalPropertyChar[capitalizationFunctionName]()
-
-                if (firstOriginalPropertyChar !== firstTransformedPropertyChar) {
-                    data[firstTransformedPropertyChar + property.slice(1)] = data[property]
-                    delete data[property]
-                }
-            })
-        }
-
-    }
-
-    Private.collection = {
-        map: function (data, iteratee) {
-            data.forEach(function (item) {
-                Private.object.map(item, iteratee)
-            })
-        },
-
-        delete: function (data, props) {
-            if (typeof props === 'string') {
-                this.deleteSingleProp(data, props)
-            } else if (Public.isArray(props)) {
-                props.forEach(function (property) {
-                    this.deleteSingleProp(data, property)
-                }, this)
-            }
-        },
-
-        deleteSingleProp: function (data, singleProp) {
-            data.forEach(function (item) {
-                delete item[singleProp]
-            })
-        },
-
-        rename: function (data, props, isReverseOrder) {
-            data.forEach(function (item) {
-                Private.object.rename(item, props, isReverseOrder)
-            })
-        },
-
-        limitTo: function (data, props) {
-            data.forEach(function (item) {
-                Private.object.limitTo(item, props)
-            })
-        },
-
-        merge: function (data, props, isOverwriteExistingProps) {
-            data.forEach(function (item) {
-                Private.object.merge(item, props, isOverwriteExistingProps)
-            })
-        },
-
-        replaceValueIfEquals: function (data, props) {
-            data.forEach(function (item) {
-                Private.object.replaceValueIfEquals(item, props)
-            })
-        },
-
-        replaceAllValuesIfEquals: function (data, props) {
-            data.forEach(function (item) {
-                Private.object.replaceAllValuesIfEquals(item, props)
-            })
-        },
-
-        changePropertyCaseFirstChar: function (data, capitalizationFunctionName) {
-            data.forEach(function (item) {
-                Private.object.changePropertyCaseFirstChar(item, capitalizationFunctionName)
-            })
-        }
-    }
-
-    Private.changePropertyCaseFirstChar = function (data, capitalizationFunctionName) {
-        if (Public.isObject(data)) {
-            Private.object.changePropertyCaseFirstChar(data, capitalizationFunctionName)
-        } else if (Public.isArray(data)) {
-            Private.collection.changePropertyCaseFirstChar(data, capitalizationFunctionName)
-        }
-    }
-
-    return Public
-}())
-
-export default mutamax
+}

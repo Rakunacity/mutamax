@@ -32,7 +32,7 @@ const ERROR_MESSAGE_MAP_ITERATEE_INVALID = 'mutamax.map -- Invalid `iteratee` pa
 /* eslint-disable no-sparse-arrays */
 const falsey = [, null, undefined, false, 0, NaN, '']
 
-const VERSION = '0.1.0'
+const VERSION = '0.1.1'
 
 export {
     ERROR_MESSAGE_MAP_DATA_INVALID,

@@ -1,6 +1,6 @@
 # mutamax
 
-#### v0.1.0
+<small>VERSION 0.1.1</small>
 
 [Email](mailto:rakunacity.printless@aleeas.com)
 
@@ -424,5 +424,5 @@ Note: add `--save` if you are using npm < 5.0.0
      */
     
     console.log(mutamax.VERSION)
-    // => 0.1.0 
+    // => 0.1.1 
 ```
