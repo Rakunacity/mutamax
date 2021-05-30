@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_RENAME_REVERSE_DATA_INVALID, ERROR_MESSAGE_RENAME_REVERSE_PROPS_INVALID
@@ -9,7 +9,7 @@ describe('renameReverse', () => {
         const data = {a: 1, b: 'bats', c: 'color'}
         const props = {mammals: 'b', orange: 'c'}
         const expected = {a: 1, mammals: 'bats', orange: 'color'}
-        mutate.renameReverse(data, props)
+        mutamax.renameReverse(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -17,7 +17,7 @@ describe('renameReverse', () => {
         const data = {a: 1, b: 'bats', c: 'color'}
         const props = {b: 'b', c: 'c'}
         const expected = {a: 1, b: 'bats', c: 'color'}
-        mutate.renameReverse(data, props)
+        mutamax.renameReverse(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -25,7 +25,7 @@ describe('renameReverse', () => {
         const data = [{a: 1, b: 'bats'}, {c: 'color', d: 'USD'}]
         const props = {mammals: 'b', orange: 'c'}
         const expected = [{a: 1, mammals: 'bats'}, {orange: 'color', d: 'USD'}]
-        mutate.renameReverse(data, props)
+        mutamax.renameReverse(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -33,7 +33,7 @@ describe('renameReverse', () => {
         const data = [{a: 1, b: 'bats'}, {c: 'color'}]
         const props = {b: 'b', c: 'c'}
         const expected = [{a: 1, b: 'bats'}, {c: 'color'}]
-        mutate.renameReverse(data, props)
+        mutamax.renameReverse(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -43,7 +43,7 @@ describe('renameReverse', () => {
         let errorMessage
 
         try {
-            mutate.renameReverse(data, props)
+            mutamax.renameReverse(data, props)
         } catch (e) {
             errorMessage = e.message
         }
@@ -57,7 +57,7 @@ describe('renameReverse', () => {
         let errorMessage
 
         try {
-            mutate.renameReverse(data, props)
+            mutamax.renameReverse(data, props)
         } catch (e) {
             errorMessage = e.message
         }

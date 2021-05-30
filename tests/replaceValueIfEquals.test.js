@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_REPLACE_VALUE_IF_EQUALS_DATA_INVALID,
@@ -11,7 +11,7 @@ describe('replaceValueIfEquals', () => {
         const data = {a: 1, b: null}
         const props = {property: 'b', ifEquals: null, replaceWith: ''}
         const expected = {a: 1, b: ''}
-        mutate.replaceValueIfEquals(data, props)
+        mutamax.replaceValueIfEquals(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -19,7 +19,7 @@ describe('replaceValueIfEquals', () => {
         const data = {a: undefined, b: undefined, c: true}
         const props = {property: ['a', 'b'], ifEquals: undefined, replaceWith: null}
         const expected = {a: null, b: null, c: true}
-        mutate.replaceValueIfEquals(data, props)
+        mutamax.replaceValueIfEquals(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -27,7 +27,7 @@ describe('replaceValueIfEquals', () => {
         const data = [{a: 1, b: 'bats'}, {a: 2, b: undefined}]
         const props = {property: 'b', ifEquals: undefined, replaceWith: ''}
         const expected = [{a: 1, b: 'bats'}, {a: 2, b: ''}]
-        mutate.replaceValueIfEquals(data, props)
+        mutamax.replaceValueIfEquals(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -35,7 +35,7 @@ describe('replaceValueIfEquals', () => {
         const data = [{a: '', b: ''}, {a: '', b: 'fruit'}]
         const props = {property: ['a', 'b'], ifEquals: '', replaceWith: null}
         const expected = [{a: null, b: null}, {a: null, b: 'fruit'}]
-        mutate.replaceValueIfEquals(data, props)
+        mutamax.replaceValueIfEquals(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -45,7 +45,7 @@ describe('replaceValueIfEquals', () => {
         let errorMessage
 
         try {
-            mutate.replaceValueIfEquals(data, props)
+            mutamax.replaceValueIfEquals(data, props)
         } catch (e) {
             errorMessage = e.message
         }
@@ -59,7 +59,7 @@ describe('replaceValueIfEquals', () => {
         let errorMessage
 
         try {
-            mutate.replaceValueIfEquals(data, props)
+            mutamax.replaceValueIfEquals(data, props)
         } catch (e) {
             errorMessage = e.message
         }
@@ -73,7 +73,7 @@ describe('replaceValueIfEquals', () => {
         let errorMessage
 
         try {
-            mutate.replaceValueIfEquals(data, props)
+            mutamax.replaceValueIfEquals(data, props)
         } catch (e) {
             errorMessage = e.message
         }

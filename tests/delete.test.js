@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_DELETE_DATA_INVALID, ERROR_MESSAGE_DELETE_PROPS_INVALID
@@ -9,7 +9,7 @@ describe('delete', () => {
         const data = {a: 1, b: 'bats'}
         const props = 'a'
         const expected = {b: 'bats'}
-        mutate.delete(data, props)
+        mutamax.delete(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -17,7 +17,7 @@ describe('delete', () => {
         const data = {a: 1, b: 'bats', c: 'color'}
         const props = ['a', 'c']
         const expected = {b: 'bats'}
-        mutate.delete(data, props)
+        mutamax.delete(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -25,7 +25,7 @@ describe('delete', () => {
         const data = [{a: 1, b: 'bats'}, {c: 'color'}]
         const props = 'a'
         const expected = [{b: 'bats'}, {c: 'color'}]
-        mutate.delete(data, props)
+        mutamax.delete(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -33,7 +33,7 @@ describe('delete', () => {
         const data = [{a: 1, b: 'bats'}, {c: 'color'}]
         const props = ['a', 'c']
         const expected = [{b: 'bats'}, {}]
-        mutate.delete(data, props)
+        mutamax.delete(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -43,7 +43,7 @@ describe('delete', () => {
         let errorMessage
 
         try {
-            mutate.delete(data, props)
+            mutamax.delete(data, props)
         } catch (e) {
             errorMessage = e.message
         }
@@ -57,7 +57,7 @@ describe('delete', () => {
         let errorMessage
 
         try {
-            mutate.delete(data, props)
+            mutamax.delete(data, props)
         } catch (e) {
             errorMessage = e.message
         }

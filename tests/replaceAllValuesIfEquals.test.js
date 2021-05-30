@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_REPLACE_ALL_VALUES_IF_EQUALS_DATA_INVALID,
@@ -10,7 +10,7 @@ describe('replaceAllValuesIfEquals', () => {
         const data = {a: 1, b: null, c: null}
         const props = {ifEquals: null, replaceWith: ''}
         const expected = {a: 1, b: '', c: ''}
-        mutate.replaceAllValuesIfEquals(data, props)
+        mutamax.replaceAllValuesIfEquals(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -18,7 +18,7 @@ describe('replaceAllValuesIfEquals', () => {
         const data = [{a: undefined, b: 'bats'}, {a: undefined, b: undefined}]
         const props = {ifEquals: undefined, replaceWith: ''}
         const expected = [{a: '', b: 'bats'}, {a: '', b: ''}]
-        mutate.replaceAllValuesIfEquals(data, props)
+        mutamax.replaceAllValuesIfEquals(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -28,7 +28,7 @@ describe('replaceAllValuesIfEquals', () => {
         let errorMessage
 
         try {
-            mutate.replaceAllValuesIfEquals(data, props)
+            mutamax.replaceAllValuesIfEquals(data, props)
         } catch (e) {
             errorMessage = e.message
         }
@@ -42,7 +42,7 @@ describe('replaceAllValuesIfEquals', () => {
         let errorMessage
 
         try {
-            mutate.replaceAllValuesIfEquals(data, props)
+            mutamax.replaceAllValuesIfEquals(data, props)
         } catch (e) {
             errorMessage = e.message
         }

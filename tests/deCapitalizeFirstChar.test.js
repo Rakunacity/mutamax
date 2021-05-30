@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_DECAPITALIZE_FIRST_CHAR_DATA_INVALID
@@ -8,14 +8,14 @@ describe('decapitalize', () => {
     it('should decapitalize properties of object', () => {
         const data = {A: 1, Mammal: 'bats', Color: 'c'}
         const expected = {a: 1, mammal: 'bats', color: 'c'}
-        mutate.deCapitalizeFirstChar(data)
+        mutamax.deCapitalizeFirstChar(data)
         assert.deepStrictEqual(data, expected)
     })
 
     it('should decapitalize properties of collection', () => {
         const data = [{A: 1, Mammal: 'bats'}, {Color: 'c'}]
         const expected = [{a: 1, mammal: 'bats'}, {color: 'c'}]
-        mutate.deCapitalizeFirstChar(data)
+        mutamax.deCapitalizeFirstChar(data)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -24,7 +24,7 @@ describe('decapitalize', () => {
         let errorMessage
 
         try {
-            mutate.deCapitalizeFirstChar(data)
+            mutamax.deCapitalizeFirstChar(data)
         } catch (e) {
             errorMessage = e.message
         }

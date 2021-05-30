@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_CAPITALIZE_FIRST_CHAR_DATA_INVALID
@@ -8,14 +8,14 @@ describe('capitalize', () => {
     it('should capitalize properties of object', () => {
         const data = {a: 1, mammal: 'bats', color: 'c'}
         const expected = {A: 1, Mammal: 'bats', Color: 'c'}
-        mutate.capitalizeFirstChar(data)
+        mutamax.capitalizeFirstChar(data)
         assert.deepStrictEqual(data, expected)
     })
 
     it('should capitalize properties of collection', () => {
         const data = [{a: 1, mammal: 'bats'}, {color: 'c'}]
         const expected = [{A: 1, Mammal: 'bats'}, {Color: 'c'}]
-        mutate.capitalizeFirstChar(data)
+        mutamax.capitalizeFirstChar(data)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -24,7 +24,7 @@ describe('capitalize', () => {
         let errorMessage
 
         try {
-            mutate.capitalizeFirstChar(data)
+            mutamax.capitalizeFirstChar(data)
         } catch (e) {
             errorMessage = e.message
         }

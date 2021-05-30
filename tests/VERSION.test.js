@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     VERSION
@@ -6,14 +6,14 @@ import {
 
 describe('VERSION', () => {
     it('semantic version number should be a string', () => {
-        assert.ok(typeof mutate.VERSION === 'string')
+        assert.ok(typeof mutamax.VERSION === 'string')
     })
 
     it('semantic version number should be at least 5 characters long', () => {
-        assert.ok(mutate.VERSION.length >= 5)
+        assert.ok(mutamax.VERSION.length >= 5)
     })
 
-    it('should return version of mutate library', () => {
-        assert.deepStrictEqual(mutate.VERSION, VERSION)
+    it('should return version of mutamax library', () => {
+        assert.deepStrictEqual(mutamax.VERSION, VERSION)
     })
 })

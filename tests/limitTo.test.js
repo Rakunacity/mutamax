@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_LIMIT_TO_DATA_INVALID, ERROR_MESSAGE_LIMIT_TO_PROPS_INVALID
@@ -9,7 +9,7 @@ describe('limitTo', () => {
         const data = {a: 1, b: 'bats', c: 'color'}
         const props = ['a', 'c']
         const expected = {a: 1, c: 'color'}
-        mutate.limitTo(data, props)
+        mutamax.limitTo(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -17,7 +17,7 @@ describe('limitTo', () => {
         const data = [{a: 1, b: 'bats'}, {c: 'color', d: 'USD'}]
         const props = ['a', 'c']
         const expected = [{a: 1}, {c: 'color'}]
-        mutate.limitTo(data, props)
+        mutamax.limitTo(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -27,7 +27,7 @@ describe('limitTo', () => {
         let errorMessage
 
         try {
-            mutate.limitTo(data, props)
+            mutamax.limitTo(data, props)
         } catch (e) {
             errorMessage = e.message
         }
@@ -41,7 +41,7 @@ describe('limitTo', () => {
         let errorMessage
 
         try {
-            mutate.limitTo(data, props)
+            mutamax.limitTo(data, props)
         } catch (e) {
             errorMessage = e.message
         }

@@ -1,12 +1,12 @@
 {
-  "name": "mutate",
+  "name": "mutamax",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "mutate.js",
+  "main": "mutamax.js",
   "author": "Rakunacity",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Rakunacity/mutate.git"
+    "url": "https://github.com/Rakunacity/mutamax.git"
   },
   "bugs": {
     "email": "rakunacity.printless@aleeas.com"

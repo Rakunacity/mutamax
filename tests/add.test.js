@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_ADD_DATA_INVALID, ERROR_MESSAGE_ADD_PROPS_INVALID
@@ -9,7 +9,7 @@ describe('add', () => {
         const data = {a: 1, b: 'bats'}
         const props = {a: 2, hello: 'all'}
         const expected = {a: 1, b: 'bats', hello: 'all'}
-        mutate.add(data, props)
+        mutamax.add(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -17,7 +17,7 @@ describe('add', () => {
         const data = [{a: 1, b: 'bats'}, {c: 'color'}]
         const props = {a: 2, hello: 'all'}
         const expected = [{a: 1, b: 'bats', hello: 'all'}, {a: 2, c: 'color', hello: 'all'}]
-        mutate.add(data, props)
+        mutamax.add(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -27,7 +27,7 @@ describe('add', () => {
         let errorMessage
 
         try {
-            mutate.add(data, props)
+            mutamax.add(data, props)
         } catch (e) {
             errorMessage = e.message
         }
@@ -41,7 +41,7 @@ describe('add', () => {
         let errorMessage
 
         try {
-            mutate.add(data, props)
+            mutamax.add(data, props)
         } catch (e) {
             errorMessage = e.message
         }

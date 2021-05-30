@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_RENAME_DATA_INVALID, ERROR_MESSAGE_RENAME_PROPS_INVALID
@@ -9,7 +9,7 @@ describe('rename', () => {
         const data = {a: 1, b: 'bats', c: 'color'}
         const props = {b: 'mammals', c: 'orange'}
         const expected = {a: 1, mammals: 'bats', orange: 'color'}
-        mutate.rename(data, props)
+        mutamax.rename(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -17,7 +17,7 @@ describe('rename', () => {
         const data = {a: 1, b: 'bats', c: 'color'}
         const props = {b: 'b', c: 'c'}
         const expected = {a: 1, b: 'bats', c: 'color'}
-        mutate.rename(data, props)
+        mutamax.rename(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -25,7 +25,7 @@ describe('rename', () => {
         const data = [{a: 1, b: 'bats'}, {c: 'color'}]
         const props = {b: 'mammals', c: 'orange'}
         const expected = [{a: 1, mammals: 'bats'}, {orange: 'color'}]
-        mutate.rename(data, props)
+        mutamax.rename(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -33,7 +33,7 @@ describe('rename', () => {
         const data = [{a: 1, b: 'bats'}, {c: 'color'}]
         const props = {b: 'b', c: 'c'}
         const expected = [{a: 1, b: 'bats'}, {c: 'color'}]
-        mutate.rename(data, props)
+        mutamax.rename(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -42,7 +42,7 @@ describe('rename', () => {
         const props = {groupId: 'userId', nonExisting: 'NonExisting'}
         const expected = {userId: 1, userLastName: 'Brown'}
 
-        mutate.rename(data, props)
+        mutamax.rename(data, props)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -52,7 +52,7 @@ describe('rename', () => {
         let errorMessage
 
         try {
-            mutate.rename(data, props)
+            mutamax.rename(data, props)
         } catch (e) {
             errorMessage = e.message
         }
@@ -66,7 +66,7 @@ describe('rename', () => {
         let errorMessage
 
         try {
-            mutate.rename(data, props)
+            mutamax.rename(data, props)
         } catch (e) {
             errorMessage = e.message
         }

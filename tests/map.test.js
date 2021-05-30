@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     ERROR_MESSAGE_MAP_DATA_INVALID, ERROR_MESSAGE_MAP_ITERATEE_INVALID
@@ -19,7 +19,7 @@ describe('map', () => {
             return {newKey: key.toUpperCase(), newValue: newValue}
         }
         const expected = {A: '1', B: 'bats'}
-        mutate.map(data, iteratee)
+        mutamax.map(data, iteratee)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -38,7 +38,7 @@ describe('map', () => {
         }
         const expected = [{a: '1', b: 'BATS'}, {c: 'COLOR'}]
 
-        mutate.map(data, iterate)
+        mutamax.map(data, iterate)
         assert.deepStrictEqual(data, expected)
     })
 
@@ -49,7 +49,7 @@ describe('map', () => {
         let errorMessage
 
         try {
-            mutate.map(data, iteratee)
+            mutamax.map(data, iteratee)
         } catch (e) {
             errorMessage = e.message
         }
@@ -63,7 +63,7 @@ describe('map', () => {
         let errorMessage
 
         try {
-            mutate.map(data, props)
+            mutamax.map(data, props)
         } catch (e) {
             errorMessage = e.message
         }

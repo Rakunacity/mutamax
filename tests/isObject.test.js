@@ -1,4 +1,4 @@
-import mutate from '../mutate'
+import mutamax from '../mutamax'
 import assert from 'assert'
 import {
     falsey
@@ -6,30 +6,30 @@ import {
 
 describe('isObject', function () {
     it('should return `true` for objects', function () {
-        assert.strictEqual(mutate.isObject({a: 1}), true)
+        assert.strictEqual(mutamax.isObject({a: 1}), true)
         /* eslint-disable no-new-object */
-        assert.strictEqual(mutate.isObject(new Object()), true)
+        assert.strictEqual(mutamax.isObject(new Object()), true)
     })
 
     it('should return `false` for non-objects: Part 1', function () {
         const args = (function getArgumentsObject () {
             return arguments
         })()
-        assert.strictEqual(mutate.isObject(args), false)
-        assert.strictEqual(mutate.isObject(Object(false)), false)
-        assert.strictEqual(mutate.isObject(Object(0)), false)
-        assert.strictEqual(mutate.isObject(Object('a')), false)
-        assert.strictEqual(mutate.isObject(Object(Symbol('a'))), false)
-        assert.strictEqual(mutate.isObject([1, 2, 3]), false)
+        assert.strictEqual(mutamax.isObject(args), false)
+        assert.strictEqual(mutamax.isObject(Object(false)), false)
+        assert.strictEqual(mutamax.isObject(Object(0)), false)
+        assert.strictEqual(mutamax.isObject(Object('a')), false)
+        assert.strictEqual(mutamax.isObject(Object(Symbol('a'))), false)
+        assert.strictEqual(mutamax.isObject([1, 2, 3]), false)
         /* eslint-disable no-array-constructor */
-        assert.strictEqual(mutate.isObject(new Array()), false)
-        assert.strictEqual(mutate.isObject(new Date()), false)
-        assert.strictEqual(mutate.isObject(new Error()), false)
+        assert.strictEqual(mutamax.isObject(new Array()), false)
+        assert.strictEqual(mutamax.isObject(new Date()), false)
+        assert.strictEqual(mutamax.isObject(new Error()), false)
         /* eslint-disable no-new-func */
-        assert.strictEqual(mutate.isObject(new Function()), false)
-        assert.strictEqual(mutate.isObject(function () {
+        assert.strictEqual(mutamax.isObject(new Function()), false)
+        assert.strictEqual(mutamax.isObject(function () {
         }), false)
-        assert.strictEqual(mutate.isObject(/x/), false)
+        assert.strictEqual(mutamax.isObject(/x/), false)
     })
 
     it('should return `false` for non-objects: Part 2', function () {
@@ -37,7 +37,7 @@ describe('isObject', function () {
         const expected = values.map(() => false)
 
         const actual = values.map(function (value, index) {
-            return index ? mutate.isObject(value) : mutate.isObject()
+            return index ? mutamax.isObject(value) : mutamax.isObject()
         })
 
         assert.deepStrictEqual(actual, expected)

@@ -19,7 +19,7 @@ import {
     VERSION
 } from './constants.js'
 
-const mutate = (function () {
+const mutamax = (function () {
     const Public = {}
     const Private = {
         isRenameReverseOrder: false
@@ -34,10 +34,10 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Array|Object} data The object/collection to iterate over.
      * @param {Function} iteratee The iteratee to transform key/value pares. Expected output of iteratee is: {newKey: 'myNewKey', newValue: 'my-new-value'}
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
-     * mutate.map({a: 1, b: 'bats'}, function (key, value) {
+     * mutamax.map({a: 1, b: 'bats'}, function (key, value) {
      *     let newValue
      *
      *     if (typeof value == 'number') {
@@ -50,7 +50,7 @@ const mutate = (function () {
      * })
      * // => {A: '1', B: 'bats'}
      *
-     * mutate.map([{a: 1, b: 'bats'}, {c: 'color'}], function (key, value) {
+     * mutamax.map([{a: 1, b: 'bats'}, {c: 'color'}], function (key, value) {
      *     let newKey, newValue
      *
      *     if (typeof value == 'number') {
@@ -86,14 +86,14 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection into which new properties will be merged.
      * @param {Object} props The object defining merged properties and their values.
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.merge({a: 1, b: 'bats'}, {a: 2, hello: 'all'})
+     * mutamax.merge({a: 1, b: 'bats'}, {a: 2, hello: 'all'})
      * // => {a: 2, b: 'bats', hello: 'all'}
      *
-     * mutate.merge([{a: 1, b: 'bats'}, {c: 'color'}], {a: 2, hello: 'all'})
+     * mutamax.merge([{a: 1, b: 'bats'}, {c: 'color'}], {a: 2, hello: 'all'})
      * // => [{a: 2, b: 'bats', hello: 'all'}, {a: 2, c: 'color', hello: 'all'}]
      *
      */
@@ -119,14 +119,14 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection to which new properties will be added.
      * @param {Object} props The object defining new properties and their values.
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.add({a: 1, b: 'bats'}, {a: 2, hello: 'all'})
+     * mutamax.add({a: 1, b: 'bats'}, {a: 2, hello: 'all'})
      * // => {a: 1, b: 'bats', hello: 'all'}
      *
-     * mutate.add([{a: 1, b: 'bats'}, {c: 'color'}], {a: 2, hello: 'all'})
+     * mutamax.add([{a: 1, b: 'bats'}, {c: 'color'}], {a: 2, hello: 'all'})
      * // => [{a: 1, b: 'bats', hello: 'all'}, {a: 2, c: 'color', hello: 'all'}]
      *
      */
@@ -152,20 +152,20 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection from which properties will be deleted.
      * @param {String|Array} props The string or array defining properties to be deleted.
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.delete({a: 1, b: 'bats'}, 'a')
+     * mutamax.delete({a: 1, b: 'bats'}, 'a')
      * // => {b: 'bats'}
      *
-     * mutate.delete({a: 1, b: 'bats', c: 'color'}, ['a', 'c'])
+     * mutamax.delete({a: 1, b: 'bats', c: 'color'}, ['a', 'c'])
      * // => {b: 'bats'}
      *
-     * mutate.delete([{a: 1, b: 'bats'}, {c: 'color' }], 'a')
+     * mutamax.delete([{a: 1, b: 'bats'}, {c: 'color' }], 'a')
      * // => [{b: 'bats'}, {c: 'color'}]
      *
-     * mutate.delete([{a: 1, b: 'bats'}, {c: 'color' }], ['a', 'c'])
+     * mutamax.delete([{a: 1, b: 'bats'}, {c: 'color' }], ['a', 'c'])
      * // => [{b: 'bats'}, {}]
      *
      */
@@ -190,14 +190,14 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection whose properties need to be renamed.
      * @param {Object} props The object defining the old property name in its key and the new property name in its value.
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.rename({a: 1, b: 'bats', c: 'color'}, {b: 'mammals', c: 'orange'})
+     * mutamax.rename({a: 1, b: 'bats', c: 'color'}, {b: 'mammals', c: 'orange'})
      * // => {a: 1, mammals: 'bats', orange: 'color'}
      *
-     * mutate.rename([{a: 1, b: 'bats'}, {c: 'color'}], {b: 'mammals', c: 'orange'})
+     * mutamax.rename([{a: 1, b: 'bats'}, {c: 'color'}], {b: 'mammals', c: 'orange'})
      * // => [{a: 1, mammals: 'bats'}, {orange: 'color'}]
      *
      */
@@ -227,14 +227,14 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection whose properties need to be renamed.
      * @param {Object} props The object defining the old property name in its value and the new property name in its key.
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.renameReverse({a: 1, b: 'bats', c: 'color'}, {mammals: 'b', orange: 'c'})
+     * mutamax.renameReverse({a: 1, b: 'bats', c: 'color'}, {mammals: 'b', orange: 'c'})
      * // => {a: 1, mammals: 'bats', orange: 'color'}
      *
-     * mutate.renameReverse([{a: 1, b: 'bats'}, {c: 'color', d: 'USD'}], {mammals: 'b', orange: 'c'})
+     * mutamax.renameReverse([{a: 1, b: 'bats'}, {c: 'color', d: 'USD'}], {mammals: 'b', orange: 'c'})
      * // => [{a: 1, mammals: 'bats'}, {orange: 'color', d: 'USD'}]
      *
      */
@@ -250,14 +250,14 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection whose properties need to be cleaned up.
      * @param {Array} props The array defining properties that will be deleted from `data`.
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.limitTo({a: 1, b: 'bats', c: 'color'}, ['a', 'c'])
+     * mutamax.limitTo({a: 1, b: 'bats', c: 'color'}, ['a', 'c'])
      * // => {a: 1, c: 'color'}
      *
-     * mutate.limitTo([{a: 1, b: 'bats'}, {c: 'color', d: 'USD'}], ['a', 'c'])
+     * mutamax.limitTo([{a: 1, b: 'bats'}, {c: 'color', d: 'USD'}], ['a', 'c'])
      * // => [{a: 1}, {c: 'color'}]
      *
      */
@@ -282,20 +282,20 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection where values transformations will take place.
      * @param {Object} props The object defining property(s) whose values need to be changed.
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.replaceValueIfEquals({a: 1, b: null}, {property: 'b', ifEquals: null, replaceWith: ''})
+     * mutamax.replaceValueIfEquals({a: 1, b: null}, {property: 'b', ifEquals: null, replaceWith: ''})
      * // => {a: 1, b: ''}
      *
-     * mutate.replaceValueIfEquals({a: undefined, b: undefined, c: true}, {property: ['a', 'b'], ifEquals: undefined, replaceWith: null})
+     * mutamax.replaceValueIfEquals({a: undefined, b: undefined, c: true}, {property: ['a', 'b'], ifEquals: undefined, replaceWith: null})
      * // => {a: null, b: null, c: true}
      *
-     * mutate.replaceValueIfEquals([{a: 1, b: 'bats'}, {a: 2, b: undefined}], {property: 'b', ifEquals: undefined, replaceWith: ''})
+     * mutamax.replaceValueIfEquals([{a: 1, b: 'bats'}, {a: 2, b: undefined}], {property: 'b', ifEquals: undefined, replaceWith: ''})
      * // => [{a: 1, b: 'bats'}, {a: 2, b: ''}]
      *
-     * mutate.replaceValueIfEquals([{a: '', b: ''}, {a: '', b: 'fruit'}], {property: ['a', 'b'], ifEquals: '', replaceWith: null})
+     * mutamax.replaceValueIfEquals([{a: '', b: ''}, {a: '', b: 'fruit'}], {property: ['a', 'b'], ifEquals: '', replaceWith: null})
      * // => [{a: null, b: null}, {a: null, b: 'fruit'}]
      *
      */
@@ -321,14 +321,14 @@ const mutate = (function () {
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection where values transformations will take place.
      * @param {Object} props The object defining values that need to be changed.
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.replaceAllValuesIfEquals({a: 1, b: null, c: null}, {ifEquals: null, replaceWith: ''})
+     * mutamax.replaceAllValuesIfEquals({a: 1, b: null, c: null}, {ifEquals: null, replaceWith: ''})
      * // => {a: 1, b: '', c: ''}
      *
-     * mutate.replaceAllValuesIfEquals([{a: undefined, b: 'bats'}, {a: undefined, b: undefined}], {ifEquals: undefined, replaceWith: ''})
+     * mutamax.replaceAllValuesIfEquals([{a: undefined, b: 'bats'}, {a: undefined, b: undefined}], {ifEquals: undefined, replaceWith: ''})
      * // => [{a: '', b: 'bats'}, {a: '', b: ''}]
      *
      */
@@ -353,14 +353,14 @@ const mutate = (function () {
      *
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection whose properties need to be changed
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.capitalizeFirstChar({a: 1, mammal: 'bats', color: 'c'})
+     * mutamax.capitalizeFirstChar({a: 1, mammal: 'bats', color: 'c'})
      * // => {A: 1, Mammal: 'bats', Color: 'c'}
      *
-     * mutate.capitalizeFirstChar([{a: 1, mammal: 'bats'}, {color: 'c'}])
+     * mutamax.capitalizeFirstChar([{a: 1, mammal: 'bats'}, {color: 'c'}])
      * // => [{A: 1, Mammal: 'bats'}, {Color: 'c'}]
      *
      */
@@ -377,14 +377,14 @@ const mutate = (function () {
      *
      * @since 0.1.0
      * @param {Object|Collection} data The object or collection whose properties need to be changed
-     * @returns {undefined} The passed `data` will be mutated, no specific return is needed.
+     * @returns {undefined} The passed `data` will be mutamaxd, no specific return is needed.
      * @example
      *
      *
-     * mutate.deCapitalizeFirstChar({A: 1, Mammal: 'bats', Color: 'c'})
+     * mutamax.deCapitalizeFirstChar({A: 1, Mammal: 'bats', Color: 'c'})
      * // => {a: 1, mammal: 'bats', color: 'c'}
      *
-     * mutate.deCapitalizeFirstChar([{A: 1, Mammal: 'bats'}, {Color: 'c'}])
+     * mutamax.deCapitalizeFirstChar([{A: 1, Mammal: 'bats'}, {Color: 'c'}])
      * // => [{a: 1, mammal: 'bats'}, {color: 'c'}]
      *
      */
@@ -405,19 +405,19 @@ const mutate = (function () {
      * @example
      *
      *
-     * mutate.isObject({})
+     * mutamax.isObject({})
      * // => true
      *
-     * mutate.isObject(new Object())
+     * mutamax.isObject(new Object())
      * // => true
      *
-     * mutate.isObject(Object('abc'))
+     * mutamax.isObject(Object('abc'))
      * // => false
      *
-     * mutate.isObject(null)
+     * mutamax.isObject(null)
      * // => false
      *
-     * mutate.isObject((function getArgumentsObject() { return arguments })())
+     * mutamax.isObject((function getArgumentsObject() { return arguments })())
      * // => false
      */
     Public.isObject = function (value) {
@@ -433,19 +433,19 @@ const mutate = (function () {
      * @example
      *
      *
-     * mutate.isArray([])
+     * mutamax.isArray([])
      * // => true
      *
-     * mutate.isArray(new Array())
+     * mutamax.isArray(new Array())
      * // => true
      *
-     * mutate.isArray(Object('abc'))
+     * mutamax.isArray(Object('abc'))
      * // => false
      *
-     * mutate.isArray(null)
+     * mutamax.isArray(null)
      * // => false
      *
-     * mutate.isArray((function getArgumentsObject() { return arguments })())
+     * mutamax.isArray((function getArgumentsObject() { return arguments })())
      * // => false
      */
     Public.isArray = function (value) {
@@ -460,7 +460,7 @@ const mutate = (function () {
      * @example
      *
      *
-     * console.log(mutate.VERSION)
+     * console.log(mutamax.VERSION)
      * // => 0.1.0
      */
     Public.VERSION = VERSION
@@ -644,4 +644,4 @@ const mutate = (function () {
     return Public
 }())
 
-export default mutate
+export default mutamax
