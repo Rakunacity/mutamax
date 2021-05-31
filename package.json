@@ -1,26 +1,29 @@
 {
   "name": "mutamax",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "license": "MIT",
   "main": "mutamax.js",
-  "author": "Rakunacity",
+  "author": {
+    "name": "Rakunacity",
+    "email": "rakunacity.printless@aleeas.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Rakunacity/mutamax.git"
   },
   "bugs": {
-    "email": "rakunacity.printless@aleeas.com"
+    "url": "https://github.com/Rakunacity/mutamax/issues"
   },
   "engines": {
     "node": ">=4.0.0"
   },
+  "types": "types/index.d.ts",
   "scripts": {
     "style": "eslint *.js tests/**/*.js",
     "test": "mocha -r esm tests",
     "validate": "npm run style && npm run test"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.23.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",

@@ -1,5 +1,7 @@
 // used in tests too
 
+'use strict'
+
 const ERROR_MESSAGE_MERGE_DATA_INVALID = 'mutamax.merge -- Invalid `data` passed. Expected <Object> or <Array>.'
 const ERROR_MESSAGE_MERGE_PROPS_INVALID = 'mutamax.merge -- Invalid `props` passed. Expected <Object>.'
 
@@ -32,9 +34,9 @@ const ERROR_MESSAGE_MAP_ITERATEE_INVALID = 'mutamax.map -- Invalid `iteratee` pa
 /* eslint-disable no-sparse-arrays */
 const falsey = [, null, undefined, false, 0, NaN, '']
 
-const VERSION = '0.1.1'
+const VERSION = '0.2.1'
 
-export {
+module.exports = {
     ERROR_MESSAGE_MAP_DATA_INVALID,
     ERROR_MESSAGE_MAP_ITERATEE_INVALID,
 
