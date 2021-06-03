@@ -1,13 +1,22 @@
 # mutamax
 
-<small>VERSION 0.2.1</small>
+<small>VERSION 0.2.2</small>
 
 [Email](mailto:rakunacity.printless@aleeas.com)
 
 ## Description
 
 Mutamax JavaScript library provides convenient methods for common transformations of objects and collections:   
-adding, removing, renaming objects' properties, and merging. The original object or collection is mutated. Only own and
+adding, removing, renaming objects' properties, and merging. It also allows changing properties' values conditionally via:
+```js
+  mutamax.replaceValueIfEquals(response, {
+    property: ['savings', 'creditCards'],
+    ifEquals: null,
+    replaceWith: 0
+  })
+```
+
+The original object or collection is mutated. Only own and
 enumerable properties of objects will be affected.
 
 It is especially useful for mass transformations inside collections - arrays of objects.
@@ -24,50 +33,50 @@ case response/request is a collection.
 
 ```js
 function fetchData() {
-    fetch('https://bank.com/accounts')
-        .then(response => {
+  fetch('https://bank.com/accounts')
+    .then(response => {
 
-            // Let's clean up the response before putting it into <form /> on our webpage.
+      // Let's clean up the response before putting it into <form /> on our webpage.
 
-            // Some fields coming from server have naming that does not reflect how form controls   
-            // are named on the interface. Plus they sound weird - `GrpSavAccount`!) 
-            // We do not want to use this naming at all.
-            mutamax.rename(response, {GrpSavAccount: 'savingsAccount', IDPartner: 'bankBranchId'})
+      // Some fields coming from server have naming that does not reflect how form controls   
+      // are named on the interface. Plus they sound weird - `GrpSavAccount`!) 
+      // We do not want to use this naming at all.
+      mutamax.rename(response, {GrpSavAccount: 'savingsAccount', IDPartner: 'bankBranchId'})
 
-            // Account balances can come as `null` if the account was not initialized yet,
-            // but we cannot display `null` on the interface as it has no meaning for the user.
-            // Let's correct it.
-            mutamax.replaceValueIfEquals(response, {
-                property: ['savingsAccountBalance', 'checkingAccountBalance'],
-                ifEquals: null,
-                replaceWith: 'N/A'
-            })
+      // Account balances can come as `null` if the account was not initialized yet,
+      // but we cannot display `null` on the interface as it has no meaning for the user.
+      // Let's correct it.
+      mutamax.replaceValueIfEquals(response, {
+        property: ['savingsAccountBalance', 'checkingAccountBalance'],
+        ifEquals: null,
+        replaceWith: 'N/A'
+      })
 
-            this.response = response
-        })
+      this.response = response
+    })
 }
 
 function postData(request) {
 
-    // Let's clean up the request now.
+  // Let's clean up the request now.
 
-    // A 3d-party library that we use for forms polluted our data with unnecessary properties.
-    mutamax.delete(request, ['_id', '_mousePos'])
+  // A 3d-party library that we use for forms polluted our data with unnecessary properties.
+  mutamax.delete(request, ['_id', '_mousePos'])
 
-    // Some values were not changed by the user, so let's change them back to server defaults.
-    mutamax.replaceValueIfEquals(request, {
-        property: ['savingsAccountBalance'],
-        ifEquals: 'N/A',
-        replaceWith: null
-    })
+  // Some values were not changed by the user, so let's change them back to server defaults.
+  mutamax.replaceValueIfEquals(request, {
+    property: ['savingsAccountBalance'],
+    ifEquals: 'N/A',
+    replaceWith: null
+  })
 
-    // Let's do renaming of properties back into what they were to make server-side happy.
-    mutamax.renameReverse(request, {GrpSavAccount: 'savingsAccount', IDPartner: 'branchId'})
+  // Let's do renaming of properties back into what they were to make server-side happy.
+  mutamax.renameReverse(request, {GrpSavAccount: 'savingsAccount', IDPartner: 'branchId'})
 
-    fetch('https://example.com/profile', {
-        method: 'POST',
-        body: request,
-    }).then(response => alert('data posted'))
+  fetch('https://example.com/profile', {
+    method: 'POST',
+    body: request,
+  }).then(response => alert('data posted'))
 }
 ````
 
@@ -435,6 +444,6 @@ import mutamax from 'mutamax'
  *
  *
  * console.log(mutamax.VERSION)
- * // => 0.2.1
+ * // => 0.2.2
  */
 ```

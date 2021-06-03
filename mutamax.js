@@ -462,7 +462,7 @@ const mutamax = (function () {
      *
      *
      * console.log(mutamax.VERSION)
-     * // => 0.2.1
+     * // => 0.2.2
      */
     Public.VERSION = VERSION
 
