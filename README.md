@@ -1,6 +1,7 @@
 # mutamax
+Collections and objects mutations: adding, removing, renaming properties, and merging
 
-<small>VERSION 0.2.2</small>
+<small>VERSION 0.2.3</small>
 
 [Email](mailto:rakunacity.printless@aleeas.com)
 

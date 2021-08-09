@@ -1,12 +1,21 @@
 {
   "name": "mutamax",
-  "version": "0.2.2",
+  "version": "0.2.3",
+  "description": "Collections and objects mutations: adding, removing, renaming properties, and merging",
   "license": "MIT",
   "main": "mutamax.js",
   "author": {
     "name": "Rakunacity",
     "email": "rakunacity.printless@aleeas.com"
   },
+  "keywords": [
+    "collections",
+    "objects",
+    "mutations",
+    "lodash",
+    "tranformations",
+    "merging"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Rakunacity/mutamax.git"
